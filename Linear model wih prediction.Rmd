@@ -143,3 +143,16 @@ predict(model.3, new, interval = "prediction", level = .95)
 
 This line shows that SIMS is equal to -5.4  + 0.47 * ARM  + 0.82 * GRIP. The R squared is 0.536 and the residual standard error is 1.144
 
+## Compare model with model 3
+
+```{r}
+anova(model.1,model.2)
+```
+
+model 1 is bigger then model 2 
+
+```{r}
+anova(model.1,model.3)
+```
+
+There is a difference from model 1 and 3 the p value is very small
