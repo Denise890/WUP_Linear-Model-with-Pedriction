@@ -57,10 +57,10 @@ basicNN + geom_point()
 ```
 
 # now add the model fit to our plot
+
 ```{r}
 basicNN + geom_point() + geom_smooth(method=lm)
 ``` 
-
 # Numerical results
 
 ```{r}
@@ -82,4 +82,34 @@ This is the equation of Blue Lime SIMS= -4.10 + ARM 0.055
 newdata <- data.frame(ARM = 88, GRIP = 94)
 predict (model.1, newdata = newdata, interval = "prediction")
 ```
+# SIMS~GRIP
+
+### Scatterplot
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=GRIP))
+```
+
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+``` 
+
+```{r}
+cor(SIMS~GRIP,data=data)
+```
+
+# Inferential  (Build linear model)
+  
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.1)
+```
+
+## Prediction
+
+```{r}
+newdata <- data.frame(GRIP = 88, ARM = 94)
+predict (model.1, newdata = newdata, interval = "prediction")
+```
+
+Residual standard error is 1.295 and adjusted R squared is 4.053
 
